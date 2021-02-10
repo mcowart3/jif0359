@@ -1,0 +1,50 @@
+@font-face {
+	font-family: "Roboto Light";
+	src: url("../../Roboto-Light.ttf");
+}
+
+.logo {
+  align-content: left;
+  align-items: left;
+  float: left;
+  width: 65%;
+  height: 100%;
+  background-color: white;
+  padding-left: 10px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.subheader {
+  background-color: #ecddc0;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+}
+s
+#headerbckgd {
+  background-color: white;
+}
+
+.about {
+  padding-left: 550px;
+  font-family: "Roboto Light";
+  color: #6c757d !important;
+  padding-top: 5px;
+}
+
+.a {
+  font-family: "Roboto Light";
+  color: #6c757d !important;
+}
+
+.donneHeader {
+  height: 7%;
+  width: 7%;
+  align-content: left;
+  align-items: left;
+  float: left;
+  margin-left: -265px;
+}

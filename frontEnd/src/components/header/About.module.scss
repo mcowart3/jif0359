@@ -1,0 +1,72 @@
+@font-face {
+    font-family: "Roboto Thin";
+    src: url("../../Roboto-Thin.ttf");
+}
+
+
+.textWrapper {
+    width: 55%;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.divider {
+    border-color:#8c2f39;
+    border-width: 5px;
+    width: 80%;
+}
+
+.name {
+    color: white;
+    font-size: 140%;
+    font-family: "Roboto Thin";
+    font-weight: bold;
+}
+
+.stuName {
+    color: white;
+    font-size: 115%;
+    font-family: "Roboto Thin";
+    font-weight: bold;
+}
+
+.caption {
+    color: white;
+    font-size: 120%;
+    font-family: "Roboto Thin";
+}
+
+.stuCaption {
+    color: white;
+    font-size: 100%;
+    font-family: "Roboto Thin";
+}
+
+.caption1 {
+    color: white;
+    font-size: 130%;
+    width: 150%;
+    font-family: "Roboto Thin";
+}
+
+.headers {
+    padding-top: 30px;
+    color: white;
+    font-size: 200%;
+    font-family: "Roboto Thin";
+    font-weight: bolder;
+}
+
+.avatars {
+    height: 15%;
+    width: 15%;
+}
+
+.inBetween {
+    width: 60px;
+}
+
+.rowPadding {
+    padding: 10px;
+    justify-content: center;
+}

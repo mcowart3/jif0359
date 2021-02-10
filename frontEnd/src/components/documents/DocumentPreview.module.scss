@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "Roboto Thin";
+  src: url("../../Roboto-Thin.ttf");
+}
+
+.Title {
+  color: black;
+  background-color: white;
+  text-align: center;
+  font-size: 110%;
+  padding: 10px;
+  margin-bottom: 0;
+  text-decoration: none;
+  font-family: "Palatino Linotype";
+}
+
+.a {
+  color: black;
+  background-color: white;
+  vertical-align: center;
+  font-size: 85%;
+  font-family: "Roboto Thin";
+}
+
+.OrnamentTop {
+  width: 100%;
+}
+
+.OrnamentBottom {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.Zoom {
+  position: relative;
+  background-color: white;
+  display: flex;
+  transition: transform 0.2s;
+  width: 18rem;
+  height: 18rem;
+}
+
+.Zoom:hover {
+  transform: scale(1.12);
+}
