@@ -1,6 +1,5 @@
 import os
 from flask import Flask, send_from_directory
-import waitress
 from api import documents, search, sort, tag
 
 app = Flask(__name__, static_folder='build/')
