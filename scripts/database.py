@@ -67,13 +67,7 @@ DOC_6 = {
     "time" : "11:59PM"
     }
 
-def db_init(db, documents):
-    db.clear_db()
-    for d in documents:
-        db.add_doc(d)
-
 class Database:
-
     client = None
     db = None
     docs = None
@@ -85,8 +79,17 @@ class Database:
         self.docs = self.db.documents
         self.db_up = True
     
-    def clear_db(self) :
-        self.docs.remove({})
+    def db_init(self, documents):
+        self.clear_db()
+
+        for d in documents:
+            self.add_doc(d)
+
+    def clear_db(self):
+        docs = self.get_all_docs()
+
+        for doc in docs:
+            self.docs.delete_one(doc)
 
     def get_doc(self, query):
         #EX: db.get_doc({'author': 'John Donne'})

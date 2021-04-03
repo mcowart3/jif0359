@@ -1,13 +1,6 @@
 from pymongo import MongoClient
 
-
-def db_init(db, documents):
-    for d in documents:
-        db.add_doc(d)
-
-
 class Database:
-
     client = None
     db = None
     docs = None
@@ -18,6 +11,10 @@ class Database:
         self.db = self.client[db_name]
         self.docs = self.db.documents
         self.db_up = True
+
+    def db_init(self, documents):
+        for d in documents:
+            self.add_doc(d)
 
     def get_doc(self, query):
         # EX: db.get_doc({'author': 'John Donne'})

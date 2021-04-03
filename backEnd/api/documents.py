@@ -15,7 +15,7 @@ db = database.Database(
 
 @doc_bp.route('/documents', methods=['GET'])
 def doc_list():
-    if(db):
+    if db:
         docs = db.get_all_docs()
         for d in docs:
             d['_id'] = str(d['_id'])
@@ -24,7 +24,7 @@ def doc_list():
             docs, 200, {'Content-Type': 'application/json'})
     else:
         response = make_response(
-            None, 404, {'Content-Type': 'application/json'})
+            {}, 404, {'Content-Type': 'application/json'})
 
     return response
 
@@ -39,7 +39,7 @@ def single_doc(doc_id):
             doc, 200, {'Content-Type': 'application/json'})
     else:
         response = make_response(
-            None, 404, {'Content-Type': 'application/json'})
+            {}, 404, {'Content-Type': 'application/json'})
 
     return response
 
@@ -56,6 +56,6 @@ def create_doc():
             new_doc, 201, {'Content-Type': 'application/json'})
     else:
         response = make_response(
-            None, 404, {'Content-Type': 'application/json'})
+            {}, 404, {'Content-Type': 'application/json'})
 
     return response
