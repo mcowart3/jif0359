@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  api:
+    build: ./backEnd
+    ports:
+      - "5000:5000"
+    links:
+      - db
+  client:
+    build: ./frontEnd
+    ports:
+      - "3000:80"
+    stdin_open: true
+  db:
+    image: mongo:4.4
+    ports:
+      - "27017:27017"
