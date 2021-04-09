@@ -1,6 +1,6 @@
 import os
 import flask
-
+import database
 
 from flask import Flask, send_from_directory
 from api import documents, search, sort, tag
@@ -11,6 +11,8 @@ app.register_blueprint(search.doc_bp)
 app.register_blueprint(sort.doc_bp)
 app.register_blueprint(tag.doc_bp)
 
+db = database.Database(url='localhost', port=27017, db_name='donne_documents')
+db.db_init([database.DOC_1, database.DOC_2, database.DOC_3, database.DOC_4, database.DOC_5, database.DOC_6])
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')

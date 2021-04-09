@@ -63,10 +63,6 @@ Open the application
 Install the shell version
 run "sudo service mongod start" in your shell
 
-#### Populate your local DB:
-
-In the /scripts directory, run the following command: `python3 driver.py`
-
 ### Working with the DB:
 
 MongoDB essentially works by keeping a big collection of dicts, each of which will represent a document for us. You can see the (currently) basic set up actions we take with the Database by looking at database.py. There are also two example documents
