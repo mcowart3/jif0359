@@ -9,9 +9,7 @@ doc_bp = Blueprint('doc_bp', __name__,
                    static_folder='build/',
                    url_prefix='/')
 
-db = database.Database(
-    url='localhost', port=27017, db_name='donne_documents')
-
+db = database.Database()
 
 @doc_bp.route('/documents', methods=['GET'])
 def doc_list():

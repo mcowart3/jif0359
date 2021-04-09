@@ -1,3 +1,4 @@
+import os
 import pymongo
 from pymongo import MongoClient
 
@@ -68,17 +69,21 @@ DOC_6 = {
     }
 
 class Database:
-    client = None
-    db = None
-    docs = None
     db_up = False
 
-    def __init__(self, url = 'localhost', port = 27017, db_name = 'donne_documents'):
-        self.client = MongoClient(url, port)
-        self.db = self.client[db_name]
-        self.docs = self.db.documents
-        self.db_up = True
-    
+    def __init__(self):
+        if not self.db_up:
+            conn_str = "mongodb://{user_name}:{pwd}@{host_name}:{port}/".format(
+                user_name=os.environ["MONGO_INITDB_ROOT_USERNAME"],
+                pwd=os.environ["MONGO_INITDB_ROOT_PASSWORD"],
+                host_name="db",
+                port=27017
+            )
+            self.client = MongoClient(conn_str)
+            self.db = self.client["donne_documents"]
+            self.docs = self.db.documents
+            self.db_up = True
+
     def db_init(self, documents):
         self.clear_db()
 

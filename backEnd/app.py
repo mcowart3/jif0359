@@ -11,7 +11,7 @@ app.register_blueprint(search.doc_bp)
 app.register_blueprint(sort.doc_bp)
 app.register_blueprint(tag.doc_bp)
 
-db = database.Database(url='localhost', port=27017, db_name='donne_documents')
+db = database.Database()
 db.db_init([database.DOC_1, database.DOC_2, database.DOC_3, database.DOC_4, database.DOC_5, database.DOC_6])
 
 @app.route('/', defaults={'path': ''})

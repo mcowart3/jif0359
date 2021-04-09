@@ -9,8 +9,7 @@ doc_bp = Blueprint('tag_bp', __name__,
                    static_folder='build/',
                    url_prefix='/')
 
-db = database.Database(
-    url='localhost', port=27017, db_name='donne_documents')
+db = database.Database()
 
 @doc_bp.route('/tag/<string:doc_id>/<string:tag>', methods=['POST'])
 def tag_doc(doc_id, tag):
