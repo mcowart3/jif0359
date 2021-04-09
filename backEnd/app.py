@@ -1,4 +1,7 @@
 import os
+import flask
+
+
 from flask import Flask, send_from_directory
 from api import documents, search, sort, tag
 
@@ -12,4 +15,7 @@ app.register_blueprint(tag.doc_bp)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
-    return {}
+    response = flask.jsonify({})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+    

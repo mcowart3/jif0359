@@ -38,4 +38,5 @@ def get_tags(doc_id):
         response = make_response(
             None, 404, {'Content-Type': 'application/json'})
 
+    response.headers['Access-Control-Allow-Origin'] = '*'
     return response

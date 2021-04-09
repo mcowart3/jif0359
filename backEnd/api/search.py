@@ -70,6 +70,7 @@ def search(query):
         response = make_response(
             None, 500, {'Content-Type': 'application/json'})
 
+    response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
 # @doc_bp.route('/<string:doc_id>/<string:query>', methods=['GET'])

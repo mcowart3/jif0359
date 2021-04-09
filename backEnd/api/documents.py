@@ -17,6 +17,7 @@ db = database.Database(
 def doc_list():
     if db:
         docs = db.get_all_docs()
+
         for d in docs:
             d['_id'] = str(d['_id'])
         docs = json.dumps(docs)
@@ -26,6 +27,7 @@ def doc_list():
         response = make_response(
             {}, 404, {'Content-Type': 'application/json'})
 
+    response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
 
@@ -41,6 +43,7 @@ def single_doc(doc_id):
         response = make_response(
             {}, 404, {'Content-Type': 'application/json'})
 
+    response.headers['Access-Control-Allow-Origin'] = '*'
     return response
 
 
@@ -58,4 +61,5 @@ def create_doc():
         response = make_response(
             {}, 404, {'Content-Type': 'application/json'})
 
+    response.headers['Access-Control-Allow-Origin'] = '*'
     return response
