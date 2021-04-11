@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  api:
+    build: ./backEnd
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: dev
+      MONGO_INITDB_ROOT_PASSWORD: dev
+    ports:
+      - "5000:5000"
+    links:
+      - db
+
+  client:
+    build: ./frontEnd
+    ports:
+      - "3000:3000"
+    stdin_open: true
+  db:
+    image: mongo:4.4
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: dev
+      MONGO_INITDB_ROOT_PASSWORD: dev
