@@ -73,7 +73,7 @@ class Database:
 
     def __init__(self):
         if not self.db_up:
-            conn_str = "mongodb://{user_name}:{pwd}@{host_name}:{port}/".format(
+            conn_str = "mongodb://{user_name}:{pwd}@{host_name}:{port}".format(
                 user_name=os.environ["MONGO_INITDB_ROOT_USERNAME"],
                 pwd=os.environ["MONGO_INITDB_ROOT_PASSWORD"],
                 host_name="db",
