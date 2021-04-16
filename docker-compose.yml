@@ -2,14 +2,12 @@ version: "3.9"
 services:
   api:
     build: ./backEnd
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: dev
-      MONGO_INITDB_ROOT_PASSWORD: dev
+    env_file:
+      - ./.env.dev
     ports:
       - "5000:5000"
     links:
       - db
-
   client:
     build: ./frontEnd
     ports:

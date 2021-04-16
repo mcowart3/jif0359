@@ -3,6 +3,7 @@ import Header from "./components/header/Header";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import DocumentPage from "./components/documents/DocumentPage";
 import LocalDocumentService from "./services/documentService/LocalDocumentService";
+import ProdDocumentService from "./services/documentService/ProdDocumentService";
 import TestDocumentService from "./services/documentService/TestDocumentService";
 import IDocumentService from "./services/documentService/IDocumentService";
 import styles from "./App.module.scss";
@@ -21,8 +22,14 @@ export default class App extends Component<any, IAppState> {
   constructor(props: any) {
     super(props);
     this.state = {};
-    this.documentService = new LocalDocumentService(); // uncomment for backend services
-    // this.documentService = new TestDocumentService(); // uncomment for frontend testing
+
+    if (process.env.NODE_ENV == "production") {
+      this.documentService = new ProdDocumentService();
+    } else {
+      this.documentService = new LocalDocumentService();
+      // this.documentService = new TestDocumentService(); // uncomment for testing
+    }
+
     this.loadDocuments();
   }
 
