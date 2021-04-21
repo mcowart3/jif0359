@@ -5,7 +5,7 @@ import SortBy from "../../model/SortBy";
 
 export default class LocalDocumentService implements IDocumentService {
   public async getDocuments(): Promise<LitDocument[]> {
-    let response = await fetch("http://localhost:5000/documents/");
+    let response = await fetch("http://localhost:5000/documents");
     let documents = await response.json();
 
     documents = documents.map((document) => {

@@ -49,7 +49,7 @@ Therefore, there should be no need to install any other dependencies.
 ## Running the Project
 
 To run the project locally, make sure your terminal is in
-the `/jif0359` folder and run `docker-compose up`.
+the `/jif0359` folder and run `docker-compose up --build`.
 
 This should start docker and set up the project using the `docker-compose.yml` file.
 
@@ -57,11 +57,13 @@ The client will be available at `localhost:3000` in your browser.
 
 The back-end api can be tested via the command line at `localhost:5000`. When running this command, the client application makes requests to the back-end app running in the `api_1` container.
 
-The database is also running in the `db_1` container, which the back-end
+The database is also running in the `db_1` container, which the back-end communicates with.
+
+If you change any files, stop the project (directions below) and then run the `docker-compose up --build` command to see the changes take effect.
 
 ## Stopping the project
 
-Open another terminal window, then run `docker-compose down`.
+Open another terminal window, go to the main project folder and then run `docker-compose down`.
 
 ## Deploying to the server
 
