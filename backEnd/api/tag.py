@@ -9,7 +9,8 @@ doc_bp = Blueprint('tag_bp', __name__,
                    static_folder='build/',
                    url_prefix='/')
 
-db = database.Database()
+db = database.Database(
+    url='localhost', port=27017, db_name='donne_documents')
 
 @doc_bp.route('/tag/<string:doc_id>/<string:tag>', methods=['POST'])
 def tag_doc(doc_id, tag):
@@ -37,5 +38,4 @@ def get_tags(doc_id):
         response = make_response(
             None, 404, {'Content-Type': 'application/json'})
 
-    response.headers['Access-Control-Allow-Origin'] = '*'
     return response
