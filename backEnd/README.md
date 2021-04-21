@@ -1,38 +1,30 @@
-## Conda
+# Application Setup
 
-Activate the environment after you create the environment: `conda activate lms`
-Create an environment from the .yaml `conda env create --file environment.yaml`
-Install new dependencies: `conda env update --file environment.yaml`
-Add a new dependency: `conda install packageName`
-You've gotta update the environment.yaml by hand though.
+## Installing Dependencies
 
-Note for windows users: Conda will not work with powershell :(
+### Packages
 
-## Serving with Flask
+To run this project, you'll need the following applications:
 
-In the /frontEnd directory, run `npm run build`.
-After this command, you should notice that the static and templates folders are populated.
-Now, in the /backEnd directory, run `python3 app.py`.
-The application should be available at the IP and port specified in the app.py.
+- Docker
 
+The easiest way to install these is to use [Homebrew](https://brew.sh/#install). Once Homebrew is installed, run the following:
 
-## DB Stuff
+#### Docker
 
-### Initial set up:
-#### Windows:
-Install the Community Version with the UI\
-Open the application
+`brew cask install docker`
 
-#### Linux:
-Install the shell version
-run "sudo service mongod start" in your shell
+## Running Application
 
-#### Populate your local DB:
-In the /scripts directory, run the following command: `python3 driver.py`
+Run this application by running `docker-compose up` in the main folder. The container for the back-end app will spin up, along with the client and database.
 
+## API Usage
+
+`http://localhost:5000/documents`
+`http://localhost:5000/documents/<id>`
+`http://localhost:5000/search/<term>` (doesn't work?)
+`http://localhost:5000/sort/title/ascending`
 
 ### Working with the DB:
-MongoDB essentially works by keeping a big collection of dicts, each of which will
-represent a document for us. You can see the (currently) basic set up actions we take
-with the Database by looking at database.py. There are also two example documents
-so you can see the form a document takes. There is also an example query to find documents.
+
+MongoDB essentially works by keeping a big collection of dicts, each of which will represent a document for us. You can see the (currently) basic set up actions we take with the Database by looking at database.py. There are also two example documents so you can see the form a document takes. There is also an example query to find documents.
