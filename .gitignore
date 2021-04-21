@@ -4,15 +4,12 @@
 frontEnd/node_modules
 frontEnd/.pnp
 .pnp.js
-.env.dev
 
 # testing
 */coverage
-.env.test
 
 # production
 */build
-.env.prod
 
 # misc
 .DS_Store
