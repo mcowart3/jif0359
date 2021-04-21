@@ -9,8 +9,7 @@ doc_bp = Blueprint('sort_bp', __name__,
                    static_folder='build/',
                    url_prefix='/')
 
-db = database.Database(
-    url='localhost', port=27017, db_name='donne_documents')
+db = database.Database()
 
 @doc_bp.route('/sort/<string:sortCriteria>/<string:ascending>', methods=['GET'])
 def sort(sortCriteria, ascending):
@@ -26,4 +25,5 @@ def sort(sortCriteria, ascending):
         response = make_response(
             None, 500, {'Content-Type': 'application/json'})
 
+    response.headers['Access-Control-Allow-Origin'] = '*'
     return response

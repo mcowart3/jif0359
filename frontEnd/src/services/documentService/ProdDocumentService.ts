@@ -3,9 +3,9 @@ import Metadata from "../../model/Metadata";
 import LitDocument from "../../model/LitDocument";
 import SortBy from "../../model/SortBy";
 
-export default class LocalDocumentService implements IDocumentService {
+export default class ProdDocumentService implements IDocumentService {
   public async getDocuments(): Promise<LitDocument[]> {
-    let response = await fetch("http://localhost:5000/documents/");
+    let response = await fetch("http://api.lettersminglesouls.live/documents");
     let documents = await response.json();
 
     documents = documents.map((document) => {
@@ -24,7 +24,7 @@ export default class LocalDocumentService implements IDocumentService {
 
   public async sortDocuments(sortBy: SortBy): Promise<LitDocument[]> {
     let documents = await (
-      await fetch("http://localhost:5000/sort/" + sortBy.endpoint)
+      await fetch("http://api.lettersminglesouls.live/sort/" + sortBy.endpoint)
     ).json();
     console.log(documents);
     documents = documents.map((document) => {
@@ -43,7 +43,7 @@ export default class LocalDocumentService implements IDocumentService {
 
   public async searchDocuments(query: string): Promise<LitDocument[]> {
     let documents = await (
-      await fetch("http://localhost:5000/search/" + query, {
+      await fetch("http://api.lettersminglesouls.live/search/" + query, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
