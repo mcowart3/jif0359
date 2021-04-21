@@ -12,7 +12,11 @@ frontEnd/.pnp
 */build
 
 # misc
-.DS_Store
+frontEnd/.DS_Store
+frontEnd/.env.local
+frontEnd/.env.development.local
+frontEnd/.env.test.local
+frontEnd/.env.production.local
 
 *npm-debug.log*
 *yarn-debug.log*
@@ -20,7 +24,5 @@ frontEnd/.pnp
 
 backEnd/__pycache__
 backEnd/*/__pycache__
-scripts/__pycache__
 
-# python related ignores
-venv/
+scripts/__pycache__

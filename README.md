@@ -1,78 +1,74 @@
 # LMS's monorepo
-
 test addition
-
 ## Release Notes
-
-### LMS version 1.1
-
-_New Features_
-
-- Ability to deploy locally with `docker` and in production with `docker-compose`.
-
-_Bug Fixes_
-
-- Issues with CORS are fixed.
 
 ### LMS version 1.0
 
-_New Features_
-
+*New Features*
 - Comment toggling has been added.
 
-_Bug Fixes_
-
+*Bug Fixes*
 - Tagging is persistent on lettersminglesouls.lmc.gatech.edu.
 
-_Known Bugs_
-
+*Known Bugs*
 - Stylistic bugs
   - About page does not "hug" the right side of the screen.
-  - Mobile view is not rendered nicely.
+  - Mobile view is not rendered nicely. 
   - Sorting dropdown that is selected is blue rather than maroon.
-
+  
 ## Install Guide
 
 ### Generic Install Information
 
-_Pre-requisites_
+*Pre-requisites*
 
-- `docker`
-- Docker for Mac (if on macOS)
+Reference the /backEnd README.md for all backend setup information.
+If developing backend functionality, ensure you're in the *lms* Conda environment. 
 
-_Dependencies_
-The dependencies for each project should be installed in
-each docker container before the container is up and running.
+*Dependencies*
 
-Therefore, there should be no need to install any other dependencies.
+- npm and node
+  - Download here: https://www.npmjs.com/get-npm
+- Python 3
+  - Download here: https://www.python.org/downloads/
+- Conda
+  - Install guide here: https://docs.conda.io/projects/conda/en/latest/user-guide/install/
 
-## Running the Project
+*Download Instructions*
 
-To run the project locally, make sure your terminal is in
-the `/jif0359` folder and run `docker-compose up`.
+No download for the client is needed. Simply access that project at lettersminglesouls.lmc.gatech.edu.
 
-This should start docker and set up the project using the `docker-compose.yml` file.
+*Build Instructions*
 
-The client will be available at `localhost:3000` in your browser.
+- Unix
+  - While in the /frontEnd directory, run the following command: `npm run buildUnix`.
+- Windows
+  - While in the /frontEnd directory, run the following command: `npm run buildWindows`.
 
-The back-end api can be tested via the command line at `localhost:5000`. When running this command, the client application makes requests to the back-end app running in the `api_1` container.
+*Installation of Application*
 
-The database is also running in the `db_1` container, which the back-end
+No installation for the client is needed. Simply access that project at lettersminglesouls.lmc.gatech.edu.
 
-## Stopping the project
+*Run Instructions*
 
-Open another terminal window, then run `docker-compose down`.
+- Frontend Testing
+  - Ensure that TestDocumentService is in use in App.tsx.
+  - While in the /frontEnd directory, run the following command: `npm run start`.
+- Fullstack
+  - Ensure that LocalDocumentService is in use in App.tsx.
+  - Ensure that you've built the latest version of the application in the /frontend directory.
+  - While in the /backend directory, run the following command: `python3 app.py`.
 
-## Deploying to the server
+*Troubleshooting*
 
-_PLEASE AVOID DOING THIS UNLESS ABSOLUTELY NEEDED_
+If issues arise, ensure you're in the correct Conda environment (lms). Other common issues that may arise are attributed to missing dependencies on either your machine or the Conda environment. Install appropriate dependencies as needed. 
 
-If you are looking to deploy, we have a server setup in DigitalOcean. You need the ssh key on your machine in your `/.ssh/` folder. Shelby has the `digital_ocean` ssh key.
+### Server Information
 
-Then, run `ssh-add ~/.ssh/digital_ocean` to set the key in your system.
+*Starting Server*
 
-Once that is set, run `export DOCKER_HOST="ssh://root@159.89.87.236` and then `docker-compose up -f docker-compose.production.yml -d`. This will take a while, but will deploy containers to the remote server. The complete application should be working at `http://lettersminglesouls.live/`. If not, there's an issue.
+For the server at lettersminglesouls.lmc.gatech.edu, simply rebooting the server via "sudo reboot" while ssh's in will get things back into normal working order. The script "lms_startup.sh" in /etc/init.d has the list of commands being run during this process. Alternatively, you can just run the lms_startup script once ssh'd in.
 
-Re-run the last `docker-compose up` command, removing the `-d` to see what issues have occurred.
+*Starting from Scratch*
 
-Once you are done deploying, you want to run `unset DOCKER_HOST`.
+Clone this repo into a directory of your choice (we used /var/). Follow general build and run instructions above. You may have to perform general server administration tasks like setting up startup scripts or reverse proxies - this will vary based on your server environment. 

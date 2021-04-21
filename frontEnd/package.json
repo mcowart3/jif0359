@@ -51,19 +51,18 @@
     "react": "^16.14.0",
     "react-app-polyfill": "^1.0.6",
     "react-bootstrap": "^1.4.3",
-    "react-dev-utils": "^10.2.1",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.14.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "resolve": "1.15.0",
     "resolve-url-loader": "3.1.2",
     "sass-loader": "8.0.2",
-    "semantic-ui-react": "2.0.3",
+    "semantic-ui-react": "^0.88.2",
     "semver": "6.3.0",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "2.3.8",
     "ts-pnp": "1.1.6",
-    "typescript": "3.9.9",
     "url-loader": "2.3.0",
     "webpack": "4.42.0",
     "webpack-dev-server": "3.11.0",
@@ -72,7 +71,8 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "buildWindows": "node scripts/build.js && robocopy /it /E build ..\\backEnd\\build",
+    "buildUnix": "node scripts/build.js && cp -rf ./build ../backEnd",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
@@ -142,5 +142,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^3.9.9"
   }
 }
