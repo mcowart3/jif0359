@@ -3,13 +3,14 @@ import flask
 import database
 
 from flask import Flask, send_from_directory
-from api import documents, search, sort, tag
+from api import documents, search, sort, tag, filters
 
 app = Flask(__name__, static_folder='build/')
 app.register_blueprint(documents.doc_bp)
 app.register_blueprint(search.doc_bp)
 app.register_blueprint(sort.doc_bp)
 app.register_blueprint(tag.doc_bp)
+#app.register_blueprint(filters.doc_bp)
 
 db = database.Database()
 db.db_init([database.DOC_1, database.DOC_2, database.DOC_3, database.DOC_4, database.DOC_5, database.DOC_6])

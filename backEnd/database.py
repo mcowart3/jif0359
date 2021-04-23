@@ -68,6 +68,10 @@ DOC_6 = {
     "time" : "11:59PM"
     }
 
+#client = pymongo.MongoClient("mongodb://localhost:5000/")
+#db = client["database"]
+#col = db["documents"]
+
 class Database:
     db_up = False
 
@@ -81,7 +85,7 @@ class Database:
             )
             self.client = MongoClient(conn_str)
             self.db = self.client["donne_documents"]
-            self.docs = self.db.documents
+            self.documents = self.db["documents"]
             self.db_up = True
 
     def db_init(self, documents):
@@ -94,21 +98,30 @@ class Database:
         docs = self.get_all_docs()
 
         for doc in docs:
-            self.docs.delete_one(doc)
+            self.documents.delete_one(doc)
 
     def get_doc(self, query):
         #EX: db.get_doc({'author': 'John Donne'})
-        doc = self.docs.find_one(query)
+        doc = self.documents.find(query)
         return doc
 
     def get_multi_doc(self, query):
         #EX: db.get_multi_doc({'author': 'John Donne'})
-        doc = self.docs.find(query)
+        doc = self.documents.find(query)
         return doc
 
     def get_all_docs(self):
         #If we make this larger, we will remove the list() and just leave it as a cursor
-        return list(self.docs.find())
+        return list(self.documents.find())
+
+    def get_all_docs_sorted(self, sortCriteria, ascending):
+        return list(self.documents.find().sort(sortCriteria, ascending))
+
+    def filter(self, which, criteria):
+        if which == "date":
+            return list(self.documents.find({"year": criteria}))
+        elif which == "correspondent":
+            return list(self.documents.find({"correspondent":criteria}))
 
     def add_doc(self, new_doc):
         docs = self.db.documents
